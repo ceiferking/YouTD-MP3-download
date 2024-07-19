@@ -1,6 +1,6 @@
 # Tutorial: Baixar Playlist do YouTube em MP3 com Python
 
-Este tutorial irá guiá-lo através dos passos necessários para baixar uma playlist inteira do YouTube em formato MP3 usando Python e `yt-dlp`.
+Este tutorial irá guiá-lo através dos passos necessários para baixar uma playlist inteira do YouTube em formato MP3 usando Python e `yt-dlp` é um codigo simples para uso pessoal apenas.
 
 Primeiro, certifique-se de ter o Python 3.8 instalado no seu sistema. Se você ainda não o tem, faça o download e instale a partir do site oficial: [python.org](https://www.python.org/downloads/release/python-380/).
 
