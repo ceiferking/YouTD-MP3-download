@@ -1,29 +1,39 @@
 import yt_dlp
+from concurrent.futures import ThreadPoolExecutor
 
-def download_playlist_mp3(playlist_url):
-    # Definindo as opções para o yt-dlp
+# Função para baixar e converter um vídeo da playlist
+def download_video(video_url):
     ydl_opts = {
-        # Seleciona o melhor formato de áudio disponível
         'format': 'bestaudio/best',
-        # Pós-processadores para extrair áudio e convertê-lo para MP3
         'postprocessors': [{
-            'key': 'FFmpegExtractAudio',  # Utiliza o FFmpeg para extrair áudio
-            'preferredcodec': 'mp3',      # Define o codec de áudio para MP3
-            'preferredquality': '192',    # Define a qualidade do áudio para 192 kbps
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
         }],
-        # Template para o nome do arquivo de saída, utilizando o título do vídeo
         'outtmpl': '%(title)s.%(ext)s',
-        # Indica que é para baixar a playlist inteira, não apenas um vídeo
-        'noplaylist': False,
+        'noplaylist': True,
     }
 
-    # Cria uma instância do YoutubeDL com as opções definidas
     with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-        # Inicia o download da playlist utilizando a URL fornecida
-        ydl.download([playlist_url])
+        ydl.download([video_url])
 
-# URL da playlist que você deseja baixar
-playlist_url = 'INSIRA_O_LINK_DA_PLAYLIST_AQUI'
+# Função principal para baixar a playlist
+def download_playlist(playlist_url):
+    ydl_opts = {
+        'extract_flat': True,  # Apenas lista os vídeos sem baixar
+        'skip_download': True,
+    }
 
-# Chama a função para baixar a playlist
-download_playlist_mp3(playlist_url)
+    with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+        result = ydl.extract_info(playlist_url, download=False)
+    
+    # Extraindo URLs dos vídeos da playlist
+    video_urls = [entry['url'] for entry in result['entries']]
+
+    # Usando ThreadPoolExecutor para processar vídeos em paralelo
+    with ThreadPoolExecutor() as executor:
+        executor.map(download_video, video_urls)
+
+if __name__ == "__main__":
+    playlist_url = input('Insira o link da playlist: ')
+    download_playlist(playlist_url)
