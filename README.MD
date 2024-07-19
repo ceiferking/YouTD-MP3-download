@@ -1,29 +1,62 @@
-# Tutorial: Baixar Playlist do YouTube em MP3 com Python
+# Baixar Playlist do YouTube em MP3 com Python
 
-Este tutorial irá guiá-lo através dos passos necessários para baixar uma playlist inteira do YouTube em formato MP3 usando Python e `yt-dlp` é um codigo simples para uso pessoal apenas.
+## Pré-requisitos
 
-Primeiro, certifique-se de ter o Python 3.8 instalado no seu sistema. Se você ainda não o tem, faça o download e instale a partir do site oficial: [python.org](https://www.python.org/downloads/release/python-380/).
+### Python 3.8
 
-Depois, instale o `yt-dlp`, uma ferramenta de linha de comando que permite baixar vídeos e áudios de sites como o YouTube. Abra o terminal ou prompt de comando e execute o comando para instalar o `yt-dlp`.
+- **O que é**: Linguagem de programação necessária para rodar o script.
+- **Como instalar**: 
+  - Acesse o [site oficial do Python](https://www.python.org/downloads/release/python-380/).
+  - Baixe e instale a versão 3.8(3.8.10(versão exata de desenvolvimento na virtual lenv))
 
-Você também precisará instalar o `ffmpeg`, que é necessário para converter os arquivos de áudio para MP3. Siga as instruções abaixo para instalar o `ffmpeg` no seu sistema:
+### ffmpeg
 
-- **Windows**: Baixe o `ffmpeg` [aqui](https://ffmpeg.org/download.html). Extraia os arquivos e adicione o caminho da pasta `bin` do `ffmpeg` ao seu PATH do sistema.
+- **O que é**: Ferramenta necessária para converter arquivos de áudio para MP3.
+- **Como instalar**:
 
-- **macOS**: Instale o Homebrew se ainda não o tiver com o comando apropriado para instalação. Depois, instale o `ffmpeg` usando o Homebrew.
+  #### Windows
+  - Baixe o `ffmpeg` [aqui](https://ffmpeg.org/download.html).
+  - Extraia os arquivos e adicione o caminho da pasta `bin` ao PATH do sistema.
 
-- **Linux**: Use o gerenciador de pacotes da sua distribuição. Por exemplo, no Ubuntu, use o comando para instalar o `ffmpeg`.
+  #### macOS
+  - **Instale o Homebrew** (se ainda não tiver) com o comando:
+    ```sh
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    ```
+  - **Instale o `ffmpeg`** com o Homebrew:
+    ```sh
+    brew install ffmpeg
+    ```
 
-Agora, você deve criar um script Python para baixar e converter a playlist. Abra um editor de texto e cole o código fornecido em um novo arquivo. Salve o arquivo com a extensão `.py`, por exemplo, `baixar_playlist.py`.
+  #### Linux
+  - **Use o gerenciador de pacotes** da sua distribuição. No Ubuntu, por exemplo, use:
+    ```sh
+    sudo apt-get install ffmpeg
+    ```
 
-Substitua o placeholder pelo link da playlist do YouTube que você deseja baixar.
+## Configurando o Projeto
 
-Em seguida, crie um arquivo chamado `requirements.txt` na mesma pasta onde está o script Python e adicione a linha necessária para instalar as dependências.
+### Arquivo `requirements.txt`
 
-No terminal ou prompt de comando, navegue até a pasta onde estão os arquivos e execute o comando para instalar as dependências a partir do `requirements.txt`.
+- **O que é**: Arquivo que lista as dependências do projeto.
+- **O que fazer**: Certifique-se de que o arquivo `requirements.txt` já está incluído no projeto.
 
-Finalmente, para executar o script e baixar a playlist, abra o terminal ou prompt de comando na pasta onde você salvou o script e execute o comando para rodar o script.
+## Instalando as Dependências
 
-O script irá baixar todos os vídeos da playlist e convertê-los para MP3, salvando-os na mesma pasta onde o script está localizado.
+- **O que fazer**: Instalar as bibliotecas necessárias listadas no `requirements.txt`.
+- **Passos**:
+  - Abra o terminal ou prompt de comando.
+  - Navegue até a pasta onde estão os arquivos do projeto.
+  - Execute o comando `pip install -r requirements.txt` para instalar todas as dependências.
 
-Seguindo os passos acima, você será capaz de baixar qualquer playlist do YouTube em formato MP3 usando Python e `yt-dlp`. Se tiver qualquer dúvida ou problema, sinta-se à vontade para buscar ajuda.
+## Executando o Script
+
+- **O que fazer**: Rodar o script para baixar e converter a playlist.
+- **Passos**:
+  - Abra o terminal ou prompt de comando na pasta onde o script está localizado.
+  - Execute o script com `python appmp3.py`.
+  - Insira o link da playlist do YouTube quando solicitado.
+
+## Conclusão
+
+E é isso! Com esses passos, você vai conseguir baixar qualquer playlist do YouTube em formato MP3 usando Python e `yt-dlp`. Se surgir qualquer dúvida ou problema, sinta-se à vontade para perguntar!
